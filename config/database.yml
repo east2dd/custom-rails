@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: custom_rails_development
+  username: wemteq
+  password:
+
+test:
+  <<: *default
+  database: custom_rails_test
+  username: wemteq
+  password:
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
